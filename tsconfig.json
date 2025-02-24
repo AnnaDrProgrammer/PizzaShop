@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es5", // Целевая версия JavaScript
+    "lib": ["dom", "dom.iterable", "esnext"], // Используемые библиотеки
+    "allowJs": true, // Разрешить импорт JavaScript файлов
+    "skipLibCheck": true, // Пропускать проверку типов в библиотеках
+    "esModuleInterop": true, // Упрощение импорта CommonJS модулей
+    "allowSyntheticDefaultImports": true, // Разрешить синтетические дефолтные импорты
+    "strict": true, // Включить строгую проверку типов
+    "forceConsistentCasingInFileNames": true, // Проверять регистр имен файлов
+    "module": "esnext", // Использовать ES модули
+    "moduleResolution": "node", // Использовать Node.js стиль разрешения модулей
+    "resolveJsonModule": true, // Разрешить импорт JSON файлов
+    "isolatedModules": true, // Обеспечить изоляцию модулей
+    "noEmit": true, // Не генерировать файлы на выходе (Webpack или другой бандлер будет заниматься этим)
+    "jsx": "react-jsx", // Использовать новый JSX трансформатор (React 17+)
+    "baseUrl": "./src", // Базовый путь для импортов
+    "paths": {
+      "@/*": ["./*"] // Алиасы для путей
+    }
+  },
+  "include": ["src", "src/@types"], // Включать файлы из папки src
+  "exclude": ["node_modules", "build"] // Исключить папки node_modules и build
+}
