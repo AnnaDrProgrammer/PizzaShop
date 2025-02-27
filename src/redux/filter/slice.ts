@@ -1,17 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../store';
-
-export type Sort = {
-  name: string;
-  sortProperty: 'rating' | 'title' | 'price' | '-rating' | '-title' | '-price';
-};
-
-export type FilterSliceState = {
-  searchValue: string;
-  categoryId: number;
-  currentPage: number;
-  sort: Sort;
-};
+import { FilterSliceState, Sort } from './types';
 
 const initialState: FilterSliceState = {
   searchValue: '',
@@ -46,15 +34,6 @@ const filterSlice = createSlice({
     },
   },
 });
-
-// function setCategoryId(id){
-//   return {type:"filter/asadasd", payload: id}
-// }
-
-//actionCreator -> при вызове этой функции вернет {type, payload}
-
-export const selectFilter = (state: RootState) => state.filter;
-export const selectSort = (state: RootState) => state.filter.sort;
 export const {
   setCategoryId,
   setSort,
