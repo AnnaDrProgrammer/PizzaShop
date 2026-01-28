@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCartItemById } from '../../redux/cart/selectors';
 import { CartItem } from '../../redux/cart/types';
 import { addItem } from '../../redux/cart/slice';
+import FavoriteButton from '../FavoriteButton';
+import { Pizza } from '../../redux/pizza/types';
 
 const typeNames = ['тонкое', 'традиционное'];
 
@@ -14,6 +16,7 @@ type PizzaBlockProps = {
   imageUrl: string;
   sizes: number[];
   types: number[];
+  rating: number;
 };
 
 const PizzaBlock: React.FC<PizzaBlockProps> = ({
@@ -23,6 +26,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
   imageUrl,
   sizes,
   types,
+  rating,
 }) => {
   const dispatch = useDispatch();
   const cartItem = useSelector(selectCartItemById(id));
@@ -44,11 +48,26 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
     dispatch(addItem(item));
   };
 
+  const pizza: Pizza = {
+    id,
+    title,
+    price,
+    imageUrl,
+    sizes,
+    types,
+    rating,
+  };
+
   return (
     <div className="pizza-block-wrapper">
       <div className="pizza-block">
         <Link key={id} to={`/pizza/${id}`}>
-          <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+          <div className="pizza-block__image-wrapper">
+            <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+            <div className="pizza-block__favorite">
+              <FavoriteButton pizza={pizza} />
+            </div>
+          </div>
           <h4 className="pizza-block__title">{title}</h4>
         </Link>
         <div className="pizza-block__selector">
